@@ -289,7 +289,7 @@ input:valid {
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
-
 .strength-weak { color: #dc3545; }
 .strength-medium { color: #ffc107; }
 .strength-strong { color: #28a745; }
+
