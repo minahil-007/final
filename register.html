@@ -29,7 +29,7 @@
         confirmPassword: form.confirmPassword.value
       };
       try {
-        const res = await fetch('/signUp', {
+        const res = await fetch('/api/auth/signUp', {  // <-- Updated URL here
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -46,3 +46,4 @@
     });
   </script>
 </body>
+</html>
