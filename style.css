@@ -5,125 +5,291 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #5976e8, #a3a6ab);
-  color: #050101;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-/* Navbar */
 .navbar {
-  background: linear-gradient(135deg, #c5bbcf, #2575fc);
-  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(8px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar h1 {
+  color: white;
   font-size: 1.5rem;
-  color: #fff;
 }
 
-.navbar a {
-  color: #f5f5f5;
-  margin-left: 20px;
+.navbar div a {
+  color: white;
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  margin-left: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-.navbar a:hover {
-  color: #ffd700;
+.navbar div a:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Form Container */
 .form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.form-container form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
   max-width: 400px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 100px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
 }
 
-h2 {
+.form-container h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #fff;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-/* Inputs */
-input {
+.form-container p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.form-container input {
   width: 100%;
   padding: 12px;
-  margin: 8px 0;
-  border: none;
+  margin-bottom: 1rem;
+  border: 2px solid #e1e5e9;
   border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-container input:focus {
   outline: none;
-  font-size: 1rem;
-  transition: box-shadow 0.3s ease;
+  border-color: #667eea;
 }
 
-input:focus {
-  box-shadow: 0 0 8px rgba(65, 60, 139, 0.8);
-}
-
-/* Buttons */
-button {
+.form-container button {
   width: 100%;
   padding: 12px;
-  background: #413c8b;
+  background: #667eea;
+  color: white;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
-  color: white;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background: #262e8e;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(38, 46, 142, 0.5);
+.form-container button:hover {
+  background: #5a6fd8;
 }
 
-/* Links */
-.link {
+.form-container .link {
   display: block;
   text-align: center;
-  margin-top: 15px;
-  color: #fff;
-  font-size: 0.9rem;
+  margin-top: 1rem;
+  color: #667eea;
+  text-decoration: none;
+}
+
+.form-container .link:hover {
   text-decoration: underline;
 }
 
-/* Success/Logout Message */
-#logoutMessage {
-  background: rgba(0, 128, 0, 0.2);
-  color: #0f0;
-  padding: 10px;
+/* Success Message Styles */
+.success-message {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.success-message h2 {
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.success-message p {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.instructions {
+  text-align: left;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.1);
   border-radius: 8px;
-  font-weight: bold;
 }
 
-/* Mobile Responsive */
-@media (max-width: 500px) {
+.instructions h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.instructions ol {
+  color: #666;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Password Requirements */
+.password-requirements {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.password-requirements h3 {
+  color: #856404;
+  margin-bottom: 1rem;
+}
+
+.password-requirements ul {
+  color: #856404;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.password-requirements li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .navbar {
+    padding: 1rem;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 1rem;
   }
-
-  .navbar a {
-    margin: 5px 0;
+  
+  .navbar div a {
+    margin: 0 0.5rem;
+    padding: 0.4rem 0.8rem;
   }
-
+  
   .form-container {
-    margin: 50px 20px;
+    padding: 1rem;
+  }
+  
+  .form-container form,
+  .success-message {
+    padding: 1.5rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
   }
 }
+
+/* Loading Spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Button States */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background: #667eea;
+  transform: none;
+}
+
+/* Form Validation Styles */
+input:invalid {
+  border-color: #dc3545;
+}
+
+input:valid {
+  border-color: #28a745;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.strength-weak { color: #dc3545; }
+.strength-medium { color: #ffc107; }
+.strength-strong { color: #28a745; }

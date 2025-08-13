@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Email Sent</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Auth System</h1>
+    <div>
+      <a href="index.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <a href="reset.html">Reset Password</a>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="success-message">
+      <h2>Check Your Email</h2>
+      <p>We've sent a password reset link to your email address.</p>
+      <p>Please check your inbox and click the link to reset your password.</p>
+      
+      <div class="instructions">
+        <h3>What to do next:</h3>
+        <ol>
+          <li>Check your email inbox (and spam folder)</li>
+          <li>Click the reset link in the email</li>
+          <li>Enter your new password</li>
+          <li>Login with your new password</li>
+        </ol>
+      </div>
+      
+      <div class="actions">
+        <button onclick="window.location.href='index.html'" class="btn-primary">Back to Login</button>
+        <button onclick="window.location.href='reset.html'" class="btn-secondary">Send Another Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
