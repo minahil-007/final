@@ -1,5 +1,11 @@
 // CHANGE THIS to your backend IP
-const API_BASE = "https://system-nkgq.vercel.app/api/auth";
+const API_BASE = "https://auth-backendd.up.railway.app/";
+
+
+
+
+
+
 
 // LOGIN
 async function login() {
