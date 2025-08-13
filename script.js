@@ -1,5 +1,5 @@
 // CHANGE THIS to your backend IP
-const API_BASE = "https://auth-backendd.up.railway.app/";
+const API_BASE = "https://auth-backendd.up.railway.app/api/auth";
 
 
 
