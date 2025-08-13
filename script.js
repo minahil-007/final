@@ -1,5 +1,5 @@
-// CHANGE THIS to your backend IP
-const API_BASE = "https://system-nkgq.vercel.app/api/auth";
+// CHANGE THIS to your backend API URL
+const API_BASE = "https://auth-backendd.up.railway.app/api/auth";
 
 // LOGIN
 async function login() {
@@ -38,9 +38,15 @@ async function signup() {
   const name = document.getElementById("signupName").value.trim();
   const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value.trim();
+  const confirmPassword = document.getElementById("signupConfirmPassword").value.trim();
 
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
     return;
   }
 
@@ -48,7 +54,7 @@ async function signup() {
     const res = await fetch(`${API_BASE}/signUp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ name, email, password, confirmPassword })
     });
 
     const data = await res.json();
