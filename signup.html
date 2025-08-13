@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>Auth System</h1>
+    <div>
+      <a href="index.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <a href="reset.html">Reset Password</a>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h2>Create Account</h2>
+    <input type="text" id="signupName" placeholder="Full Name" required>
+    <input type="email" id="signupEmail" placeholder="Email" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button onclick="signup()">Signup</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

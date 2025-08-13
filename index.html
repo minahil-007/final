@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Auth System</h1>
+    <div>
+      <a href="index.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <a href="reset.html">Reset Password</a>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h2>Login</h2>
+    <p id="logoutMessage" style="color: green; text-align:center; display:none;">Logged out successfully!</p>
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <a href="reset.html" class="link">Forgot Password?</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if (localStorage.getItem("logoutMessage") === "true") {
+      document.getElementById("logoutMessage").style.display = "block";
+      localStorage.removeItem("logoutMessage");
+    }
+  </script>
+</body>
+</html>
