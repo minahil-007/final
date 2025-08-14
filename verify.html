@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* OTP Box Layout */
+    .otp-inputs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .otp-box {
+      width: 45px;
+      height: 50px;
+      font-size: 1.5rem;
+      text-align: center;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: white;
+    }
+    .otp-box:focus {
+      box-shadow: 0 0 8px rgba(65, 60, 139, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>My App</h1>
+    <div>
+      <a href="index.html">Login</a>
+      <a href="signup.html">Signup</a>
+    </div>
+  </div>
+
+  <!-- OTP Form -->
+  <div class="form-container">
+    <h2>Email Verification</h2>
+    <p style="color: #fff; text-align: center; margin-bottom: 15px;">
+      Please enter the 6-digit OTP sent to your email.
+    </p>
+
+    <!-- OTP boxes -->
+    <div class="otp-inputs">
+      <input type="text" maxlength="1" class="otp-box">
+      <input type="text" maxlength="1" class="otp-box">
+      <input type="text" maxlength="1" class="otp-box">
+      <input type="text" maxlength="1" class="otp-box">
+      <input type="text" maxlength="1" class="otp-box">
+      <input type="text" maxlength="1" class="otp-box">
+    </div>
+
+    <button onclick="collectOtpAndVerify()">Verify</button>
+    <a href="#" class="link" id="resendOtp">Resend OTP</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // OTP auto-navigation logic
+    const otpBoxes = document.querySelectorAll('.otp-box');
+    otpBoxes.forEach((box, index) => {
+      box.addEventListener('input', () => {
+        if (box.value.length === 1 && index < otpBoxes.length - 1) {
+          otpBoxes[index + 1].focus();
+        }
+      });
+
+      box.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && box.value === "" && index > 0) {
+          otpBoxes[index - 1].focus();
+        }
+      });
+    });
+
+    // Collect OTP from boxes and call backend
+    function collectOtpAndVerify() {
+      const otp = Array.from(otpBoxes).map(input => input.value).join('');
+      document.getElementById("otp")?.remove(); // remove any hidden input if exists
+      const hiddenOtp = document.createElement("input");
+      hiddenOtp.type = "hidden";
+      hiddenOtp.id = "otp";
+      hiddenOtp.value = otp;
+      document.body.appendChild(hiddenOtp);
+      verifyOtp();
+    }
+  </script>
+</body>
+</html>

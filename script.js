@@ -59,8 +59,9 @@ async function signup() {
 
     const data = await res.json();
     if (data.success) {
-      alert(data.message || "Signup successful!");
-      window.location.href = "index.html";
+      alert(data.message || "Signup successful! Please verify your email.");
+      localStorage.setItem("emailForOtp", email);
+      window.location.href = "verify.html"; // redirect to OTP verification page
     } else {
       alert(data.message || "Signup failed.");
     }
@@ -69,6 +70,57 @@ async function signup() {
     alert("Error connecting to server.");
   }
 }
+
+// OTP VERIFICATION
+async function verifyOtp() {
+  const otp = document.getElementById("otp").value.trim();
+  const email = localStorage.getItem("emailForOtp");
+
+  if (!otp || otp.length !== 6) {
+    alert("Please enter a valid 6-digit OTP.");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE}/verify-otp`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, otp })
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert(data.message || "Verification successful!");
+      localStorage.removeItem("emailForOtp");
+      window.location.href = "index.html"; // back to login
+    } else {
+      alert(data.message || "Invalid OTP. Please try again.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Error connecting to server.");
+  }
+}
+
+// RESEND OTP
+document.getElementById("resendOtp")?.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const email = localStorage.getItem("emailForOtp");
+
+  try {
+    const res = await fetch(`${API_BASE}/resend-otp`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    });
+
+    const data = await res.json();
+    alert(data.message || "OTP resent successfully.");
+  } catch (err) {
+    console.error(err);
+    alert("Error sending OTP.");
+  }
+});
 
 // RESET PASSWORD
 async function resetPassword() {
