@@ -72,7 +72,7 @@ async function signup() {
 }
 
 // OTP VERIFICATION
-async function verifyOtp() {
+async function verifyEmail() {
   const otp = document.getElementById("otp").value.trim();
   const email = localStorage.getItem("emailForOtp");
 
@@ -82,7 +82,7 @@ async function verifyOtp() {
   }
 
   try {
-    const res = await fetch(`${API_BASE}/verify-otp`, {
+    const res = await fetch(`${API_BASE}/verifyEmail`, { // fixed endpoint
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, otp })
@@ -108,7 +108,7 @@ document.getElementById("resendOtp")?.addEventListener("click", async (e) => {
   const email = localStorage.getItem("emailForOtp");
 
   try {
-    const res = await fetch(`${API_BASE}/resend-otp`, {
+    const res = await fetch(`${API_BASE}/resendOTP`, { // fixed endpoint
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email })
@@ -173,3 +173,4 @@ async function logout() {
   localStorage.setItem("logoutMessage", "true");
   window.location.href = "index.html";
 }
+ 
