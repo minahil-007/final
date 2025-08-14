@@ -80,14 +80,23 @@
     // Collect OTP from boxes and call backend
     function collectOtpAndVerify() {
       const otp = Array.from(otpBoxes).map(input => input.value).join('');
-      document.getElementById("otp")?.remove(); // remove any hidden input if exists
+      if (otp.length !== 6) {
+        alert("Please enter a valid 6-digit OTP.");
+        return;
+      }
+
+      // Create hidden input so script.js's verifyEmail() can read it
+      document.getElementById("otp")?.remove();
       const hiddenOtp = document.createElement("input");
       hiddenOtp.type = "hidden";
       hiddenOtp.id = "otp";
       hiddenOtp.value = otp;
       document.body.appendChild(hiddenOtp);
-      verifyOtp();
+
+      // Call your backend verification function
+      verifyEmail();
     }
   </script>
 </body>
 </html>
+ 
